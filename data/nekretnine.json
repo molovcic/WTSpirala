@@ -1,0 +1,195 @@
+[
+  {
+    "id": 1,
+    "tip_nekretnine": "Stan",
+    "naziv": "Useljiv stan Sarajevo",
+    "kvadratura": 58,
+    "cijena": 232000,
+    "tip_grijanja": "plin",
+    "lokacija": "Novo Sarajevo",
+    "godina_izgradnje": 2019,
+    "datum_objave": "01.10.2023.",
+    "opis": "Sociis natoque penatibus.",
+    "upiti": [
+      {
+        "korisnik_id": 1,
+        "tekst_upita": "Nullam eu pede mollis pretium."
+      },
+      {
+        "korisnik_id": 2,
+        "tekst_upita": "Phasellus viverra nulla."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "tip_nekretnine": "Poslovni prostor",
+    "naziv": "Mali poslovni prostor",
+    "kvadratura": 20,
+    "cijena": 70000,
+    "tip_grijanja": "struja",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2005,
+    "datum_objave": "20.08.2023.",
+    "opis": "Magnis dis parturient montes.",
+    "upiti": [
+      {
+        "korisnik_id": 2,
+        "tekst_upita": "Integer tincidunt."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "tip_nekretnine": "Stan",
+    "naziv": "Luksuzni stan u centru",
+    "kvadratura": 85,
+    "cijena": 350000,
+    "tip_grijanja": "centralno",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2021,
+    "datum_objave": "15.09.2023.",
+    "opis": "Prostran luksuzni stan u centru grada.",
+    "upiti": [
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Novi test"
+      },
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Novi test2"
+      },
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Novi test2"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "tip_nekretnine": "Kuća",
+    "naziv": "Moderna kuća Centar",
+    "kvadratura": 120,
+    "cijena": 450000,
+    "tip_grijanja": "plin",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2020,
+    "datum_objave": "10.09.2023.",
+    "opis": "Moderna kuća sa dvorištem i garažom.",
+    "upiti": [
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Novi test"
+      },
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Molim vas više informacija o kući."
+      },
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Novi test2"
+      },
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Novi test2"
+      },
+      {
+        "korisnik_id": 4,
+        "tekst_upita": "Novi test2"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "tip_nekretnine": "Stan",
+    "naziv": "Jednosoban stan Centar",
+    "kvadratura": 40,
+    "cijena": 120000,
+    "tip_grijanja": "struja",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2010,
+    "datum_objave": "05.09.2022.",
+    "opis": "Idealan stan za samce ili parove.",
+    "upiti": [
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Post test"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "tip_nekretnine": "Kuća",
+    "naziv": "Porodična kuća Centar",
+    "kvadratura": 150,
+    "cijena": 550000,
+    "tip_grijanja": "centralno",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2018,
+    "datum_objave": "25.12.2023.",
+    "opis": "Prostrana porodična kuća sa vrtom.",
+    "upiti": [
+      {
+        "korisnik_id": 2,
+        "tekst_upita": "Da li postoji mogućnost obilaska kuće?"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "tip_nekretnine": "Stan",
+    "naziv": "Penthouse Centar",
+    "kvadratura": 200,
+    "cijena": 1200000,
+    "tip_grijanja": "plin",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2022,
+    "datum_objave": "15.12.2023.",
+    "opis": "Ekskluzivan penthouse sa panoramskim pogledom.",
+    "upiti": []
+  },
+  {
+    "id": 8,
+    "tip_nekretnine": "Poslovni prostor",
+    "naziv": "Prostrani poslovni prostor",
+    "kvadratura": 300,
+    "cijena": 900000,
+    "tip_grijanja": "struja",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2015,
+    "datum_objave": "10.12.2023.",
+    "opis": "Idealan za velike kompanije.",
+    "upiti": []
+  },
+  {
+    "id": 9,
+    "tip_nekretnine": "Stan",
+    "naziv": "Moderan stan u Centru",
+    "kvadratura": 75,
+    "cijena": 270000,
+    "tip_grijanja": "struja",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2019,
+    "datum_objave": "01.12.2024.",
+    "opis": "Moderan stan blizu svih sadržaja.",
+    "upiti": [
+      {
+        "korisnik_id": 3,
+        "tekst_upita": "Da li stan ima vlastito parking mjesto?"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "tip_nekretnine": "Kuća",
+    "naziv": "Vikendica Centar",
+    "kvadratura": 90,
+    "cijena": 250000,
+    "tip_grijanja": "plin",
+    "lokacija": "Centar",
+    "godina_izgradnje": 2012,
+    "datum_objave": "20.11.2023.",
+    "opis": "Savršena vikendica za odmor.",
+    "upiti": []
+  }
+]

@@ -1,0 +1,89 @@
+body {
+    background-color: #fdf1d3;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 90px;
+}
+
+.tip-nekretnine {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.grid-lista-nekretnina {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+}
+
+.nekretnina {
+    border: 2px solid #000;
+    padding: 20px;
+    background-color: white;
+    max-width: 300px;
+    height: 400px;
+    min-height: 400px; /* Ensure equal height */
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.nekretnina.kuca {
+    background-color: powderblue;
+}
+
+.nekretnina.pp {
+    background-color: green;
+}
+
+.slika-nekretnine {
+    max-width: 100%;
+    height: 50%;
+    object-fit: cover; /* Ensure the image covers the box without distortion */
+}
+
+.detalji-nekretnine {
+    text-align: left;
+    flex-grow: 1; /* Allow this section to take available space */
+}
+
+.detalji-nekretnine h3 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.detalji-nekretnine p {
+    margin: 5px 0;
+}
+
+.cijena-nekretnine {
+    text-align: right;
+}
+
+.datum_objave {
+    text-align: center;
+}
+
+.detalji-dugme {
+    background-color: #ff9900;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto; /* Push button to the bottom */
+}

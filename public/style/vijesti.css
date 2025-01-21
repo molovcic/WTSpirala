@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  height: 90px;
+}
+
+.vijestiContainer {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.glavnaVijest {
+  border: 1px solid black;
+  background-color: lightblue;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.visokaVijest {
+  border: 1px solid black;
+  background-color: lightyellow;
+  text-align: center;
+  aspect-ratio: 1 / 2;
+}
+
+.kvadratnaVijest {
+  border: 1px solid black;
+  background-color: lightcoral;
+  text-align: center;
+  aspect-ratio: 1/1;
+}
+
+@media (min-width: 801px) {
+  .vijestiContainer {
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+  }
+
+  /* Glavna vijest-------------------------------*/
+  .glavnaVijest {
+    grid-column: 1 / 5;
+    aspect-ratio: 2 / 1;
+    grid-row: 1 / 2;
+  }
+  /* --------------------------------------------*/
+
+  /* Visoke Vijesti------------------------------*/
+  #visoka1 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+
+  #visoka2 {
+    grid-column: 4 / 5;
+    grid-row: 2 / 4;
+  }
+
+  #visoka3 {
+    grid-column: 3 / 4;
+    grid-row: 4 / 6;
+  }
+
+  #visoka4 {
+    grid-column: 4 / 5;
+    grid-row: 4 / 6;
+  }
+
+  /*----------------------------------------------*/
+
+  /* Kvadratne Vijesti ----------------------------*/
+
+  #kvadratna1 {
+    grid-column: 2/ 3;
+  }
+
+  #kvadratna2 {
+    grid-column: 3/4;
+  }
+
+  #kvadratna3 {
+    grid-column: 2/3;
+    grid-row: 2 / 3;
+  }
+
+  #kvadratna4 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+  /*------------------------------------------*/
+}
+
+@media (max-width: 800px) {
+  .vijestiContainer {
+    grid-template-columns: 50% 50%;
+  }
+
+  /* Glavna vijest-------------------------------*/
+  .glavnaVijest {
+    grid-column: 1 / 3;
+    aspect-ratio: 1 / 1;
+  }
+  /* --------------------------------------------*/
+
+  /* Visoke Vijesti------------------------------*/
+  #visoka1 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+
+  #visoka2 {
+    grid-column: 2 / 3;
+    grid-row: 4 / 6;
+  }
+
+  #visoka3,
+  #visoka4 {
+    grid-row: 8 / 10;
+  }
+
+  #visoka3 {
+    grid-column: 1 / 2;
+  }
+
+  #visoka4 {
+    grid-column: 2 / 3;
+  }
+  /*----------------------------------------------*/
+
+  /* Kvadratne Vijesti ----------------------------*/
+  #kvadratna1,
+  #kvadratna2,
+  #kvadratna6,
+  #kvadratna8 {
+    grid-column: 2 / 3;
+  }
+
+  #kvadratna3,
+  #kvadratna4,
+  #kvadratna5,
+  #kvadratna7 {
+    grid-column: 1 / 2;
+  }
+
+  #kvadratna1 {
+    grid-row: 2 / 3;
+  }
+
+  #kvadratna2 {
+    grid-row: 3 / 4;
+  }
+
+  #kvadratna3 {
+    grid-row: 4 / 5;
+  }
+
+  #kvadratna4 {
+    grid-row: 5 / 6;
+  }
+
+  #kvadratna5,
+  #kvadratna6 {
+    grid-row: 6 / 7;
+  }
+
+  #kvadratna7,
+  #kvadratna8 {
+    grid-row: 7 / 8;
+  }
+  /*----------------------------------------------*/
+}

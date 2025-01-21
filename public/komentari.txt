@@ -1,0 +1,12 @@
+Primijećeno je da, nakon što se jednom klikne link na meniju, nije moguće vratiti se na prethodnu stranicu, kao ni koristiti 
+više meni za pristup ostalim stranicama.
+
+Visina menija je eksplicitno postavljena u svakom .css file-u pa je bilo potrebno mijenjati svaku pojedinačno da bi se ostvarila
+konzistentnost kroz sve stranice. 
+
+
+
+(nekretnine.html) Mozda bi bilo bolje da je detalji dugme zaista dugme, a ne preuređeni div element.
+
+U svim .html file-ovima je primijeceno da su sve komponente stranica dobro raspoređene po klasama što rezultira u jednostavnijem
+pisanju css-a poslije. 

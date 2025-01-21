@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistika Nekretnina</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Style/statistika.css">
+</head>
+<body>
+    <iframe src="meni.html"></iframe>
+
+    <h1>Statistika Nekretnina</h1>
+    
+    <div class="form-container">
+        <div class="period-container">
+            <h3>Vremenski periodi</h3>
+            <div id="periodi-container">
+                <div class="period-inputs">
+                    <div class="input-group">
+                        <label>Od godine:</label>
+                        <input type="number" class="period-od" min="1900" max="2024">
+                    </div>
+                    <div class="input-group">
+                        <label>Do godine:</label>
+                        <input type="number" class="period-do" min="1900" max="2024">
+                    </div>
+                </div>
+            </div>
+            <button onclick="dodajPeriod()">Dodaj period</button>
+        </div>
+
+        <div class="cijena-container">
+            <h3>Rasponi cijena</h3>
+            <div id="cijene-container">
+                <div class="cijena-inputs">
+                    <div class="input-group">
+                        <label>Od (KM):</label>
+                        <input type="number" class="cijena-od" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Do (KM):</label>
+                        <input type="number" class="cijena-do" min="0">
+                    </div>
+                </div>
+            </div>
+            <button onclick="dodajRasponCijena()">Dodaj raspon cijena</button>
+        </div>
+
+        <button onclick="iscrtajHistogram()">Iscrtaj histogram</button>
+    </div>
+
+    <div id="charts-container" class="charts-container"></div>
+
+    <script src="../Scripts/SpisakNekretnina.js"></script>
+    <script src="../Scripts/StatistikaNekretnina.js"></script>
+    <script src="../Scripts/statistika.js"></script>
+</body>
+<script src="../scripts/PoziviAjax.js"></script>
+
+<script src="../scripts/meni.js"></script>
+
+</html>
