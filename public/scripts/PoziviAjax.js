@@ -234,6 +234,20 @@ const PoziviAjax = (() => {
         });
     }
     
+    function getNextUpiti(nekretnina_id, page, fnCallback) {
+        ajaxRequest('GET', `/next/upiti/nekretnina${encodeURIComponent(nekretnina_id)}?page=${page}`, null, (error, data) => {
+            if (error) {
+                fnCallback(error, null);
+            } else {
+                try {
+                    const upiti = JSON.parse(data);
+                    fnCallback(null, upiti);
+                } catch (parseError) {
+                    fnCallback(parseError, null);
+                }
+            }
+        });
+    }
 
     return {
         postLogin: impl_postLogin,
@@ -244,6 +258,7 @@ const PoziviAjax = (() => {
         getNekretnine: impl_getNekretnine,
         getMojiUpiti: getMojiUpiti,
         getTop5Nekretnina: getTop5Nekretnina,
-        getNekretnina: getNekretnina
+        getNekretnina: getNekretnina,
+        getNextUpiti: getNextUpiti
     };
 })();

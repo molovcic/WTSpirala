@@ -1,20 +1,19 @@
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
+    let currentIndex = 0;
+    let allUpiti = [];
+    let isLastPage = false;
+    let loadedPages = new Set();
 
     if (!id) {
-        document.getElementById('detalji').innerHTML = '<p>Nekretnina nije pronađena.</p>';
+        document.getElementById('detalji').innerHTML = '<p style="text-align:center">Nekretnina nije pronađena.</p>';
         return;
     }
 
     function updateNekretninaDetails(nekretnina) {
         const osnovnoDiv = document.getElementById('osnovno');
         const detaljiDiv = document.getElementById('detalji');
-        const upitiDiv = document.getElementById('upiti');
-
-        osnovnoDiv.innerHTML = '';
-        detaljiDiv.innerHTML = '';
-        upitiDiv.innerHTML = '';
 
         osnovnoDiv.innerHTML = `
             <img src="/Resources/stan/default.jpg" alt="${nekretnina.naziv}" />
@@ -37,23 +36,126 @@ window.onload = function() {
             </div>
         `;
 
-        nekretnina.upiti.forEach((upit, index) => {
-            upitiDiv.innerHTML += `
-                <div class="upit" id="upit${index + 1}">
-                    <p><strong>${upit.username}:</strong></p>
-                    <p>${upit.poruka}</p>
-                </div>
-            `;
-        });
+        if (nekretnina.upiti && nekretnina.upiti.length > 0) {
+            allUpiti = nekretnina.upiti;
+            displayCurrentUpit();
+        }
+    }
 
-        const btnNazad = document.getElementById('nazad');
-        const btnNaprijed = document.getElementById('naprijed');
-        if (nekretnina.upiti.length > 1) {
-            btnNazad.style.display = 'inline-block';
-            btnNaprijed.style.display = 'inline-block';
+    function displayCurrentUpit() {
+        const upitiDiv = document.getElementById('upiti');
+        
+        // Clear everything except buttons
+        const nazadBtn = document.getElementById('nazad');
+        const naprijedBtn = document.getElementById('naprijed');
+        upitiDiv.innerHTML = '';
+        
+        if (allUpiti.length > 0) {
+            const currentUpit = allUpiti[currentIndex];
+            const upitDiv = document.createElement('div');
+            upitDiv.className = 'upit';
+            upitDiv.innerHTML = `
+                <p><strong>${currentUpit.korisnik_id}:</strong></p>
+                <p>${currentUpit.tekst_upita}</p>
+            `;
+            upitiDiv.appendChild(upitDiv);
+        }
+
+        // Create new buttons
+        const newNazadBtn = document.createElement('button');
+        newNazadBtn.id = 'nazad';
+        newNazadBtn.textContent = 'Nazad';
+        
+        const newNaprijedBtn = document.createElement('button');
+        newNaprijedBtn.id = 'naprijed';
+        newNaprijedBtn.textContent = 'Naprijed';
+        
+        // Add buttons back
+        upitiDiv.appendChild(newNazadBtn);
+        upitiDiv.appendChild(newNaprijedBtn);
+        
+        // Add event listeners to new buttons
+        document.getElementById('nazad').addEventListener('click', handlePrevious);
+        document.getElementById('naprijed').addEventListener('click', handleNext);
+    }
+
+    function handlePrevious() {
+        if (currentIndex > 0) {
+            currentIndex--;
         } else {
-            btnNazad.style.display = 'none';
-            btnNaprijed.style.display = 'none';
+            currentIndex = allUpiti.length - 1;
+        }
+        displayCurrentUpit();
+    }
+
+    function handleNext() {
+        const nextIndex = currentIndex + 1;
+        
+        if (nextIndex >= allUpiti.length) {
+
+            if (!isLastPage) {
+                const nextPage = Math.floor(allUpiti.length / 3) + 1;
+                if (!loadedPages.has(nextPage)) {
+                    loadedPages.add(nextPage);
+                    PoziviAjax.getNextUpiti(id, nextPage, (error, upiti) => {
+                        if (error) {
+                            console.error('Error fetching upiti:', error);
+                            currentIndex = 0;
+                            displayCurrentUpit();
+                        } else if (upiti && upiti.length > 0) {
+
+                            allUpiti = [...allUpiti, ...upiti];
+
+                            currentIndex = nextIndex;
+                            displayCurrentUpit();
+                            
+                            
+                            if (nextIndex % 3 === 0 && !isLastPage) {
+                                const followingPage = nextPage + 1;
+                                if (!loadedPages.has(followingPage)) {
+                                    loadedPages.add(followingPage);
+                                    PoziviAjax.getNextUpiti(id, followingPage, (error, moreUpiti) => {
+                                        if (moreUpiti && moreUpiti.length > 0) {
+                                            allUpiti = [...allUpiti, ...moreUpiti];
+                                        } else {
+                                            isLastPage = true;
+                                        }
+                                    });
+                                }
+                            }
+                        } else {
+                            isLastPage = true;
+                            currentIndex = 0;
+                            displayCurrentUpit();
+                        }
+                    });
+                } else {
+                    currentIndex = 0;
+                    displayCurrentUpit();
+                }
+            } else {
+                currentIndex = 0;
+                displayCurrentUpit();
+            }
+        } else {
+            currentIndex = nextIndex;
+            displayCurrentUpit();
+            
+
+            
+            if ((currentIndex + 1) % 3 === 0 && !isLastPage) {
+                const nextPage = Math.floor((currentIndex + 1) / 3) + 1;
+                if (!loadedPages.has(nextPage)) {
+                    loadedPages.add(nextPage);
+                    PoziviAjax.getNextUpiti(id, nextPage, (error, upiti) => {
+                        if (upiti && upiti.length > 0) {
+                            allUpiti = [...allUpiti, ...upiti];
+                        } else {
+                            isLastPage = true;
+                        }
+                    });
+                }
+            }
         }
     }
 
@@ -62,6 +164,17 @@ window.onload = function() {
             console.error(error);
         } else {
             updateNekretninaDetails(nekretnina);
+            if (nekretnina.upiti && nekretnina.upiti.length > 0) {
+                const nextPage = 1; 
+                loadedPages.add(nextPage);
+                PoziviAjax.getNextUpiti(id, nextPage, (error, upiti) => {
+                    if (upiti && upiti.length > 0) {
+                        allUpiti = [...allUpiti, ...upiti];
+                    } else {
+                        isLastPage = true;
+                    }
+                });
+            }
         }
     });
 };
