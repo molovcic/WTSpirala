@@ -57,12 +57,7 @@ iframe {
   align-self: auto;
 }
 
-
-#formaInteresovanje {
-  padding: 20px;
-}
-
-.tekst {
+#upiti {
   border: 1px solid #000;
   padding: 20px;
   margin: 20px;
@@ -78,7 +73,7 @@ iframe {
   width: calc(100% - 100px); 
 }
 
-.btn {
+#nazad, #naprijed {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

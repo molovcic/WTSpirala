@@ -248,29 +248,7 @@ const PoziviAjax = (() => {
             }
         });
     }
-    function getInteresovanja(nekretnina_id, fnCallback) {
-        ajaxRequest('GET', `/nekretnina/${encodeURIComponent(nekretnina_id)}/interesovanja`, null, (error, data) => {
-            if (error) {
-                fnCallback(error, null);
-            } else {
-                try {
-                    const parsedData = JSON.parse(data);
-    
-                    // Ensure all expected properties (upiti, zahtjevi, ponude) exist
-                    const interesovanja = {
-                        upiti: parsedData.upiti || [],
-                        zahtjevi: parsedData.zahtjevi || [],
-                        ponude: parsedData.ponude || [],
-                    };
-    
-                    fnCallback(null, interesovanja);
-                } catch (parseError) {
-                    fnCallback(parseError, null);
-                }
-            }
-        });
-    }
-    
+
     return {
         postLogin: impl_postLogin,
         postLogout: impl_postLogout,
@@ -281,7 +259,6 @@ const PoziviAjax = (() => {
         getMojiUpiti: getMojiUpiti,
         getTop5Nekretnina: getTop5Nekretnina,
         getNekretnina: getNekretnina,
-        getNextUpiti: getNextUpiti,
-        getInteresovanja: getInteresovanja
+        getNextUpiti: getNextUpiti
     };
 })();
