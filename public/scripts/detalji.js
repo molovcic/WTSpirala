@@ -7,7 +7,7 @@ window.onload = function() {
     let loadedPages = new Set();
 
     if (!id) {
-        document.getElementById('detalji').innerHTML = '<p style="text-align:center">Nekretnina nije pronađena.</p>';
+        document.getElementById('detalji').innerHTML = '<p>Nekretnina nije pronađena, molim vas izaberite jednu iz liste nekretnina</p>';
         return;
     }
 
@@ -37,15 +37,26 @@ window.onload = function() {
         `;
 
         if (nekretnina.upiti && nekretnina.upiti.length > 0) {
+            console.log("Hello");   
             allUpiti = nekretnina.upiti;
             displayCurrentUpit();
+        }
+        else if (nekretnina.upiti.length === 0) {
+            console.log('Nema upita');
+            const upitiDiv = document.getElementById('upiti');
+            upitiDiv.innerHTML = '';
+            const upitDiv = document.createElement('div');
+            upitDiv.className = 'upit';
+            upitDiv.innerHTML = `
+                <p><strong>Nekretnina nema upita</strong></p>
+            `;
+            upitiDiv.appendChild(upitDiv);
         }
     }
 
     function displayCurrentUpit() {
         const upitiDiv = document.getElementById('upiti');
         
-        // Clear everything except buttons
         const nazadBtn = document.getElementById('nazad');
         const naprijedBtn = document.getElementById('naprijed');
         upitiDiv.innerHTML = '';
@@ -61,7 +72,6 @@ window.onload = function() {
             upitiDiv.appendChild(upitDiv);
         }
 
-        // Create new buttons
         const newNazadBtn = document.createElement('button');
         newNazadBtn.id = 'nazad';
         newNazadBtn.textContent = 'Nazad';
@@ -70,11 +80,9 @@ window.onload = function() {
         newNaprijedBtn.id = 'naprijed';
         newNaprijedBtn.textContent = 'Naprijed';
         
-        // Add buttons back
         upitiDiv.appendChild(newNazadBtn);
         upitiDiv.appendChild(newNaprijedBtn);
         
-        // Add event listeners to new buttons
         document.getElementById('nazad').addEventListener('click', handlePrevious);
         document.getElementById('naprijed').addEventListener('click', handleNext);
     }

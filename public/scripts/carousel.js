@@ -11,22 +11,19 @@ function postaviCarousel(sviElementi, indeks = 0) {
 
     let trenutniIndeks = indeks;
 
-    // Funkcija koja prikazuje samo trenutni element
     const prikaziElement = () => {
         sviElementi.forEach((element, i) => {
             element.style.display = i === trenutniIndeks ? 'block' : 'none';
         });
     };
 
-    prikaziElement(); // Prikaži početni element
+    prikaziElement(); 
 
-    // Funkcija za navigaciju ulijevo
     const fnLijevo = () => {
         trenutniIndeks = (trenutniIndeks - 1 + sviElementi.length) % sviElementi.length;
         prikaziElement();
     };
 
-    // Funkcija za navigaciju udesno
     const fnDesno = () => {
         trenutniIndeks = (trenutniIndeks + 1) % sviElementi.length;
         prikaziElement();

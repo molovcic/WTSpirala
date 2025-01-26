@@ -1,15 +1,12 @@
 function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
-    // pozivanje metode za filtriranje
     const filtriraneNekretnine = instancaModula.filtrirajNekretnine({ tip_nekretnine: tip_nekretnine });
     
-    // Ciscenje svih elemenata liste
     divReferenca.innerHTML = '';
 
     if (filtriraneNekretnine.length === 0) {
         divReferenca.innerHTML = '<p>Trenutno nema dostupnih nekretnina ovoga tipa.</p>';
     } else {
         filtriraneNekretnine.forEach(nekretnina => {
-            // Construct the HTML string for each nekretnina
             let nekretninaHtml = `
                 <div class="nekretnina ${tip_nekretnine === "Kuća" ? 'kuca' : tip_nekretnine === "Poslovni prostor" ? 'pp' : ''}">
                     <div class="slika-nekretnine">
@@ -25,7 +22,6 @@ function spojiNekretnine(divReferenca, instancaModula, tip_nekretnine) {
                     <a href="../detalji.html?id=${nekretnina.id}" class="detalji-dugme">Detalji</a>
                 </div>
             `;
-            // Append the constructed HTML to the div
             divReferenca.innerHTML += nekretninaHtml;
         });
     }

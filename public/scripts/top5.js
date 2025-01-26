@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="datum-postavljanja">
                     <p>Datum objave: ${nekretnina.datum_objave}</p>
                 </div>
-                <button class="detalji-dugme">Detalji</button>
+                <a href="../detalji.html?id=${nekretnina.id}" class="detalji-dugme">Detalji</a>
             `;
             
             top5Container.appendChild(topDiv);

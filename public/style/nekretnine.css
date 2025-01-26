@@ -11,6 +11,12 @@ iframe {
     height: 90px;
 }
 
+
+
+h1 {
+    padding-left: 20px;
+}
+
 .tip-nekretnine {
     text-align: center;
     font-weight: bold;
@@ -70,7 +76,7 @@ iframe {
 }
 
 .detalji-dugme {
-    margin: 0 auto; /* Remove excessive margins */
+    margin: 0 auto; 
     background-color: #ff9900;
     color: white;
     padding: 10px 20px;
